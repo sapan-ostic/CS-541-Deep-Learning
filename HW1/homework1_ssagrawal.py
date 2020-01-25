@@ -35,15 +35,20 @@ def problem_k (A, c, d):
 
 def problem_l (A, k):
     w,v = np.linalg.eig(A)
-    return v[:,-k:]
+    sort_id = np.argsort(w)[-k:] 
+    return print(v[:, sort_id[::-1]]) 
 
 def problem_m (x, k, m, s):
-    n = x.shape[0]
-    z = np.ones([n,1])
-    return s*np.eye(n)* np.random.randn(n, k) + m*z
+    n = len(x)
+    z = np.ones([n])
+    mean = x + np.dot(m,z)
+    cov = s*np.eye(n)
+    return np.random.multivariate_normal(mean, cov, size=k).transpose()
 
-# def problem_n (A):
-#     return ...
+def problem_n (A):
+    n = A.shape[0]
+    ind = np.random.permutation(n)
+    return A[ind]
 
 def linear_regression (X_tr, y_tr):
     n,m = X_tr.shape
