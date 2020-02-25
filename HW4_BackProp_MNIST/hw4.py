@@ -218,7 +218,7 @@ Xv = np.append(Xv, np.ones((nv,1)), axis=1)
 
 Yv = np.load("mnist_validation_labels.npy")
 
-# layers, lr, epochs, bs, alpha = findBestHyperparameters()
+layers, lr, epochs, bs, alpha = findBestHyperparameters()
 
 print('Testing model . . .')
 # Training on tuned hyperparameters
